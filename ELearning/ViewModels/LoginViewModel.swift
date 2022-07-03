@@ -11,16 +11,15 @@ protocol LoginView: AnyObject {
     var username: String { get set }
     var password: String { get set }
 
-    var error: String { get set }
+    var error: String? { get set }
 }
 
 class LoginViewModel {
     weak private(set) var screenManager: ScreenManager?
-    weak private(set) var loginView: LoginView?
+    weak var loginView: LoginView?
     let loginRepository: LoginRepository
 
-    init(loginView: LoginView, loginRepository: LoginRepository, screenManager: ScreenManager) {
-        self.loginView = loginView
+    init(loginRepository: LoginRepository, screenManager: ScreenManager) {
         self.screenManager = screenManager
         self.loginRepository = loginRepository
     }

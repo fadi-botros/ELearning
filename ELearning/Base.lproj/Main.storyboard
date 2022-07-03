@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ELearning" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ELearning" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,9 +38,15 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <connections>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dC-nz-me6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="W8L-1c-fgv">
+                                <rect key="frame" x="197" y="537" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -50,8 +56,14 @@
                             <constraint firstItem="6PW-Xf-CHg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Al3-fc-39o"/>
                             <constraint firstItem="qKC-uM-gA4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="R15-at-glh"/>
                             <constraint firstItem="qKC-uM-gA4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VvX-Am-b0f"/>
+                            <constraint firstItem="W8L-1c-fgv" firstAttribute="top" secondItem="Ggw-1h-Q8z" secondAttribute="bottom" constant="7.5" id="WUw-Iz-x6x"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityControl" destination="W8L-1c-fgv" id="U4o-AD-N80"/>
+                        <outlet property="passwordTextField" destination="tuR-8i-QuE" id="ijF-4x-aKs"/>
+                        <outlet property="userNameTextField" destination="2lv-fe-xoe" id="swY-eY-pLY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

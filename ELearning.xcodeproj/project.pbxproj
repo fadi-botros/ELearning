@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D02FF102868250E005BEB86 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FF0F2868250E005BEB86 /* ScreenManager.swift */; };
 		0D2C37402863A90D00B62C7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C373F2863A90D00B62C7E /* AppDelegate.swift */; };
-		0D2C37442863A90D00B62C7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C37432863A90D00B62C7E /* ViewController.swift */; };
+		0D2C37442863A90D00B62C7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C37432863A90D00B62C7E /* LoginViewController.swift */; };
 		0D2C37472863A90D00B62C7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2C37452863A90D00B62C7E /* Main.storyboard */; };
 		0D2C37492863A90F00B62C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D2C37482863A90F00B62C7E /* Assets.xcassets */; };
 		0D2C374C2863A90F00B62C7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2C374A2863A90F00B62C7E /* LaunchScreen.storyboard */; };
@@ -19,13 +19,19 @@
 		0D799BF62865EBF30086BDCA /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D799BF52865EBF30086BDCA /* CoursesViewModel.swift */; };
 		0D799BF928663D6F0086BDCA /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D799BF828663D6F0086BDCA /* Student.swift */; };
 		0D83BAB5286C217B00024AB8 /* LoginFormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D83BAB4286C217B00024AB8 /* LoginFormParser.swift */; };
+		0DC8EE1628711D070047F424 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1528711D070047F424 /* Pagination.swift */; };
+		0DC8EE1828711D350047F424 /* LessonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1728711D350047F424 /* LessonsViewModel.swift */; };
+		0DC8EE1A28711D690047F424 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1928711D690047F424 /* Lesson.swift */; };
+		0DC8EE1C28711D750047F424 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1B28711D750047F424 /* Course.swift */; };
+		0DC8EE1F2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */; };
+		0DC8EE21287140AD0047F424 /* LessonsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE20287140AD0047F424 /* LessonsRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D02FF0F2868250E005BEB86 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		0D2C373C2863A90D00B62C7E /* ELearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2C373F2863A90D00B62C7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D2C37432863A90D00B62C7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D2C37432863A90D00B62C7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0D2C37462863A90D00B62C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D2C37482863A90F00B62C7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D2C374B2863A90F00B62C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +42,12 @@
 		0D799BF52865EBF30086BDCA /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
 		0D799BF828663D6F0086BDCA /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		0D83BAB4286C217B00024AB8 /* LoginFormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormParser.swift; sourceTree = "<group>"; };
+		0DC8EE1528711D070047F424 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		0DC8EE1728711D350047F424 /* LessonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewModel.swift; sourceTree = "<group>"; };
+		0DC8EE1928711D690047F424 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		0DC8EE1B28711D750047F424 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceAndDelegateForPagination.swift; sourceTree = "<group>"; };
+		0DC8EE20287140AD0047F424 /* LessonsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +80,12 @@
 		0D2C373E2863A90D00B62C7E /* ELearning */ = {
 			isa = PBXGroup;
 			children = (
+				0DC8EE1D2871263A0047F424 /* Views */,
 				0D322865286F2978005FDE77 /* Repository */,
 				0D83BAB3286C215700024AB8 /* Utils */,
 				0D799BF72865EC090086BDCA /* Model */,
 				0D799BF22865EB900086BDCA /* ViewModels */,
 				0D2C373F2863A90D00B62C7E /* AppDelegate.swift */,
-				0D2C37432863A90D00B62C7E /* ViewController.swift */,
 				0D2C37452863A90D00B62C7E /* Main.storyboard */,
 				0D2C37482863A90F00B62C7E /* Assets.xcassets */,
 				0D2C374A2863A90F00B62C7E /* LaunchScreen.storyboard */,
@@ -89,6 +101,7 @@
 				0D83BAB4286C217B00024AB8 /* LoginFormParser.swift */,
 				0D322863286F2961005FDE77 /* LoginRepository.swift */,
 				0D322866286F73A0005FDE77 /* CoursesRepository.swift */,
+				0DC8EE20287140AD0047F424 /* LessonsRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -98,6 +111,8 @@
 			children = (
 				0D799BF32865EBAE0086BDCA /* LoginViewModel.swift */,
 				0D799BF52865EBF30086BDCA /* CoursesViewModel.swift */,
+				0DC8EE1528711D070047F424 /* Pagination.swift */,
+				0DC8EE1728711D350047F424 /* LessonsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -106,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				0D799BF828663D6F0086BDCA /* Student.swift */,
+				0DC8EE1928711D690047F424 /* Lesson.swift */,
+				0DC8EE1B28711D750047F424 /* Course.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +132,15 @@
 			children = (
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0DC8EE1D2871263A0047F424 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */,
+				0D2C37432863A90D00B62C7E /* LoginViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,13 +214,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC8EE1C28711D750047F424 /* Course.swift in Sources */,
 				0D322867286F73A0005FDE77 /* CoursesRepository.swift in Sources */,
-				0D2C37442863A90D00B62C7E /* ViewController.swift in Sources */,
+				0D2C37442863A90D00B62C7E /* LoginViewController.swift in Sources */,
 				0D322864286F2961005FDE77 /* LoginRepository.swift in Sources */,
+				0DC8EE1A28711D690047F424 /* Lesson.swift in Sources */,
 				0D799BF62865EBF30086BDCA /* CoursesViewModel.swift in Sources */,
 				0D2C37402863A90D00B62C7E /* AppDelegate.swift in Sources */,
 				0D83BAB5286C217B00024AB8 /* LoginFormParser.swift in Sources */,
+				0DC8EE1828711D350047F424 /* LessonsViewModel.swift in Sources */,
 				0D799BF928663D6F0086BDCA /* Student.swift in Sources */,
+				0DC8EE21287140AD0047F424 /* LessonsRepository.swift in Sources */,
+				0DC8EE1628711D070047F424 /* Pagination.swift in Sources */,
+				0DC8EE1F2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift in Sources */,
 				0D02FF102868250E005BEB86 /* ScreenManager.swift in Sources */,
 				0D799BF42865EBAE0086BDCA /* LoginViewModel.swift in Sources */,
 			);
