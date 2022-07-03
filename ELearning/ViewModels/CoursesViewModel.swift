@@ -8,12 +8,21 @@
 import Foundation
 
 class CoursesViewModel {
-    let pagination: PaginatedCrudViewModel<Course>
+    private(set) var pagination: PaginatedCrudViewModel<Course>?
+    weak var paginationView: AbstractPaginatedCrudView<Course>? {
+        didSet {
+            guard let paginationView = paginationView else {
+                return
+            }
+            self.pagination?.view = paginationView
+        }
+    }
+
     let screenManager: ScreenManager
     let userToken: String
 
-    init(view: AbstractPaginatedCrudView<Course>, repository: AbstractPaginatedRepository<Course>, userToken: String, screenManager: ScreenManager) {
-        self.pagination = PaginatedCrudViewModel(view: view, repository: repository)
+    init(repository: AbstractPaginatedRepository<Course>, userToken: String, screenManager: ScreenManager) {
+        self.pagination = PaginatedCrudViewModel(repository: repository)
         self.userToken = userToken
         self.screenManager = screenManager
     }

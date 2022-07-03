@@ -25,6 +25,7 @@
 		0DC8EE1C28711D750047F424 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1B28711D750047F424 /* Course.swift */; };
 		0DC8EE1F2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */; };
 		0DC8EE21287140AD0047F424 /* LessonsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE20287140AD0047F424 /* LessonsRepository.swift */; };
+		0DC8EE24287166C00047F424 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8EE23287166C00047F424 /* CoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0DC8EE1B28711D750047F424 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceAndDelegateForPagination.swift; sourceTree = "<group>"; };
 		0DC8EE20287140AD0047F424 /* LessonsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsRepository.swift; sourceTree = "<group>"; };
+		0DC8EE23287166C00047F424 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				0DC8EE1E2871266F0047F424 /* TableViewDataSourceAndDelegateForPagination.swift */,
 				0D2C37432863A90D00B62C7E /* LoginViewController.swift */,
+				0DC8EE23287166C00047F424 /* CoursesViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				0D2C37402863A90D00B62C7E /* AppDelegate.swift in Sources */,
 				0D83BAB5286C217B00024AB8 /* LoginFormParser.swift in Sources */,
 				0DC8EE1828711D350047F424 /* LessonsViewModel.swift in Sources */,
+				0DC8EE24287166C00047F424 /* CoursesViewController.swift in Sources */,
 				0D799BF928663D6F0086BDCA /* Student.swift in Sources */,
 				0DC8EE21287140AD0047F424 /* LessonsRepository.swift in Sources */,
 				0DC8EE1628711D070047F424 /* Pagination.swift in Sources */,

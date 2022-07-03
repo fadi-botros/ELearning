@@ -15,7 +15,7 @@ protocol LoginView: AnyObject {
 }
 
 class LoginViewModel {
-    weak private(set) var screenManager: ScreenManager?
+    private(set) var screenManager: ScreenManager?
     weak var loginView: LoginView?
     let loginRepository: LoginRepository
 
@@ -29,15 +29,17 @@ class LoginViewModel {
 
     func login() {
         loginRepository.login(username: username, password: password) { token, error in
-            if let error = error {
-                self.loginView?.error = error.localizedDescription
-                return
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.loginView?.error = error.localizedDescription
+                    return
+                }
+                if let token = token {
+                    _ = self.screenManager?.showCoursesScreen(userToken: token)
+                    return
+                }
+                self.loginView?.error = "Unknown error"
             }
-            if let token = token {
-                _ = self.screenManager?.showCoursesScreen(userToken: token)
-                return
-            }
-            self.loginView?.error = "Unknown error"
         }
     }
 }

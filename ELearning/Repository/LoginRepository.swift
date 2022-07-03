@@ -54,8 +54,8 @@ class LoginRepositoryJWT: LoginRepository {
             }
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let json = try! decoder.decode(Token.self, from: data)
-            completionHandler(json.jwtToken, error)
+            let json = try? decoder.decode(Token.self, from: data)
+            completionHandler(json?.jwtToken, error)
         }.resume()
     }
 }

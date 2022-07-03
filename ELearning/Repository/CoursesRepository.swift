@@ -8,10 +8,10 @@
 import UIKit
 
 protocol CoursesRepository {
-    func courses(completionHandler: @escaping ([Course], Error?) -> Void)
+    func courses(page: Int, completionHandler: @escaping ([Course], Error?) -> Void)
 }
 
-class CoursesRepositoryImpl: CoursesRepository {
+class CoursesRepositoryImpl: AbstractPaginatedRepository<Course>, CoursesRepository {
     let jwtToken: String
     let urlSession: URLSession
 
@@ -20,8 +20,8 @@ class CoursesRepositoryImpl: CoursesRepository {
         self.jwtToken = jwtToken
     }
 
-    func courses(completionHandler: @escaping ([Course], Error?) -> Void) {
-        var request = URLRequest(url: URL(string: "https://fssrlms.online/wp-json/wp/v2/sfwd-courses")!)
+    func courses(page: Int = 1, completionHandler: @escaping ([Course], Error?) -> Void) {
+        var request = URLRequest(url: URL(string: "https://fssrlms.online/wp-json/wp/v2/sfwd-courses?page=\(page)")!)
         request.addValue("Bearer \(jwtToken)", forHTTPHeaderField: "Authorization")
         urlSession.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -39,37 +39,8 @@ class CoursesRepositoryImpl: CoursesRepository {
 //            print(String(data: data ?? Data(), encoding: .utf8) ?? "")
         }.resume()
     }
-}
 
-class LessonRepositoryImpl: LessonsRepository {
-    let jwtToken: String
-    let urlSession: URLSession
-    let course: Course
-
-    init(urlSession: URLSession, jwtToken: String, course: Course) {
-        self.urlSession = urlSession
-        self.jwtToken = jwtToken
-        self.course = course
-    }
-
-    func lessons(completionHandler: @escaping ([Lesson], Error?) -> Void) {
-        var request = URLRequest(url: URL(string: "https://fssrlms.online/wp-json/wp/v2/sfwd-lessons?course=\(course.id)")!)
-        request.addValue("Bearer \(jwtToken)", forHTTPHeaderField: "Authorization")
-        urlSession.dataTask(with: request) { data, response, error in
-            print(String(data: data!, encoding: .utf8)!)
-            if let error = error {
-                completionHandler([], error)
-                return
-            }
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            do {
-                let json = try JSONDecoder().decode([Lesson].self, from: data ?? Data())
-                completionHandler(json, nil)
-            } catch let err {
-                completionHandler([], err)
-            }
-        }.resume()
+    override func load(page: Int, completionHandler: @escaping ([Course], Error?) -> Void) {
+        courses(page: page, completionHandler: completionHandler)
     }
 }
-

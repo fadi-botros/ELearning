@@ -13,7 +13,7 @@ class LessonsViewModel {
     let userToken: String
 
     init(view: AbstractPaginatedCrudView<Lesson>, repository: AbstractPaginatedRepository<Lesson>, userToken: String, screenManager: ScreenManager) {
-        self.pagination = PaginatedCrudViewModel(view: view, repository: repository)
+        self.pagination = PaginatedCrudViewModel(repository: repository)
         self.userToken = userToken
         self.screenManager = screenManager
     }

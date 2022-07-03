@@ -32,8 +32,10 @@ extension CellDequeuer {
 class TableViewDataSourceAndDelegateForPagination<T, Dequeuer: CellDequeuer>: AbstractPaginatedCrudView<T>, UITableViewDataSource, UITableViewDelegate {
 
     let cellDequeuer: Dequeuer
+    weak var tableView: UITableView?
 
-    init(paginator: PaginatedCrudViewModel<T>, cellDequeuer: Dequeuer) {
+    init(tableView: UITableView, paginator: PaginatedCrudViewModel<T>, cellDequeuer: Dequeuer) {
+        self.tableView = tableView
         self.paginator = paginator
         self.cellDequeuer = cellDequeuer
     }
@@ -46,6 +48,15 @@ class TableViewDataSourceAndDelegateForPagination<T, Dequeuer: CellDequeuer>: Ab
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellDequeuer.dequeueCellAtRow(tableView, indexPath: indexPath)
+    }
+
+    override func postChange(arrayChange: ArrayWithChange<Cell<T>>) {
+        switch(arrayChange.change) {
+            case .insert(let indices):
+                tableView?.insertRows(at: indices.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            case .delete(let indices):
+                tableView?.deleteRows(at: indices.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+        }
     }
 
 }
