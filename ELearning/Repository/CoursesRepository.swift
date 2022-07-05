@@ -29,6 +29,7 @@ class CoursesRepositoryImpl: AbstractPaginatedRepository<Course>, CoursesReposit
                 return
             }
             let jsonDecoder = JSONDecoder()
+            print(String(data: data!, encoding: .utf8)!)
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
                 let json = try JSONDecoder().decode([Course].self, from: data ?? Data())

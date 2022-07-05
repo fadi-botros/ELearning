@@ -39,11 +39,7 @@ class CoursesViewController: UIViewController {
         guard let pagination = coursesViewModel?.pagination, let tableView = self.tableView else {
             return
         }
-        let dataSourceAndDelegate = TableViewDataSourceAndDelegateForPagination(tableView: tableView, paginator: pagination, cellDequeuer: CoursesCellDequeuer(paginator: pagination))
-        pagination.view = dataSourceAndDelegate
-        tableView.dataSource = dataSourceAndDelegate
-        tableView.delegate = dataSourceAndDelegate
-        self.dataSourceAndDelegate = dataSourceAndDelegate
+        self.dataSourceAndDelegate = TableViewDataSourceAndDelegateForPagination(tableView: tableView, cellDequeuer: CoursesCellDequeuer(paginator: pagination))
     }
 
     override func viewDidLoad() {

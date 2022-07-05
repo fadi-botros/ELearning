@@ -38,7 +38,7 @@ class LoginViewModel {
                     _ = self.screenManager?.showCoursesScreen(userToken: token)
                     return
                 }
-                self.loginView?.error = "Unknown error"
+                self.loginView?.error = "Invalid credentials"
             }
         }
     }

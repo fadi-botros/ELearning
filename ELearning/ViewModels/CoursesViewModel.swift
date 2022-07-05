@@ -22,7 +22,9 @@ class CoursesViewModel {
     let userToken: String
 
     init(repository: AbstractPaginatedRepository<Course>, userToken: String, screenManager: ScreenManager) {
-        self.pagination = PaginatedCrudViewModel(repository: repository)
+        self.pagination = PaginatedCrudViewModel(repository: repository, onSelect: { [weak screenManager] course in
+            _ = screenManager?.showLessonsScreen(userToken: userToken, course: course)
+        })
         self.userToken = userToken
         self.screenManager = screenManager
     }
@@ -33,6 +35,28 @@ class CoursesViewModel {
 
 }
 
-class SingleLessonViewModel {
+protocol SingleLessonView: AnyObject {
+    func load(string: String)
+}
 
+class SingleLessonViewModel {
+    let screenManager: ScreenManager
+    let userToken: String
+    let repository: LessonsRepository
+    let lesson: Lesson
+
+    init(repository: LessonsRepository, userToken: String, screenManager: ScreenManager, lesson: Lesson) {
+        self.screenManager = screenManager
+        self.userToken = userToken
+        self.repository = repository
+        self.lesson = lesson
+    }
+
+    weak var view: SingleLessonView? {
+        didSet {
+            repository.lessonDetails(lesson: lesson) { lessonDetails, error in
+                self.view?.load(string: lessonDetails?.content.rendered ?? "")
+            }
+        }
+    }
 }

@@ -14,4 +14,5 @@ struct Rendered: Codable {
 struct Course: Codable {
     let id: Int
     let title: Rendered
+    let slug: String
 }

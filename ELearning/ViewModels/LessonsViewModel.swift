@@ -11,15 +11,16 @@ class LessonsViewModel {
     let pagination: PaginatedCrudViewModel<Lesson>
     let screenManager: ScreenManager
     let userToken: String
+    let repository: LessonsRepository
 
-    init(view: AbstractPaginatedCrudView<Lesson>, repository: AbstractPaginatedRepository<Lesson>, userToken: String, screenManager: ScreenManager) {
-        self.pagination = PaginatedCrudViewModel(repository: repository)
+    init(repository: AbstractPaginatedRepository<Lesson> & LessonsRepository, userToken: String, screenManager: ScreenManager) {
+        self.repository = repository
+        self.pagination = PaginatedCrudViewModel(repository: repository, onSelect: { [weak screenManager] lesson in
+            _ = screenManager?.showSingleLessonScreen(repository: repository, userToken: userToken, lesson: lesson)
+//            _ = screenManager?.showSingleLessonScreen(userToken: userToken, lesson: lesson)
+        })
         self.userToken = userToken
         self.screenManager = screenManager
-    }
-
-    func showLesson(lesson: Lesson) {
-        _ = self.screenManager.showSingleLessonScreen(userToken: userToken, lesson: lesson)
     }
 
 }

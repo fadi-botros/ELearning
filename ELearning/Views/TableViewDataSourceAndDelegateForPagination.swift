@@ -7,6 +7,10 @@
 
 import UIKit
 
+class LoadingCell: UITableViewCell {
+    @IBOutlet weak var activityView: UIActivityIndicatorView?
+}
+
 protocol CellDequeuer {
     associatedtype T
     associatedtype Cell: UITableViewCell
@@ -24,20 +28,29 @@ extension CellDequeuer {
                 apply(cell: cell, data: data)
                 return cell
             case .loadingCell:
-                return tableView.dequeueReusableCell(withIdentifier: "Loading", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Loading", for: indexPath)
+                (cell as? LoadingCell)?.activityView?.startAnimating()
+                return cell
         }
     }
 }
 
-class TableViewDataSourceAndDelegateForPagination<T, Dequeuer: CellDequeuer>: AbstractPaginatedCrudView<T>, UITableViewDataSource, UITableViewDelegate {
+class TableViewDataSourceAndDelegateForPagination<T, Dequeuer: CellDequeuer>: AbstractPaginatedCrudView<T>, UITableViewDataSource, UITableViewDelegate where Dequeuer.T == T {
 
     let cellDequeuer: Dequeuer
     weak var tableView: UITableView?
 
-    init(tableView: UITableView, paginator: PaginatedCrudViewModel<T>, cellDequeuer: Dequeuer) {
+    init(tableView: UITableView, cellDequeuer: Dequeuer) {
         self.tableView = tableView
-        self.paginator = paginator
+        self.paginator = cellDequeuer.paginator
         self.cellDequeuer = cellDequeuer
+
+        super.init()
+
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+
+        self.paginator.view = self
     }
 
     let paginator: PaginatedCrudViewModel<T>
@@ -48,6 +61,12 @@ class TableViewDataSourceAndDelegateForPagination<T, Dequeuer: CellDequeuer>: Ab
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellDequeuer.dequeueCellAtRow(tableView, indexPath: indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if case .dataCell(let data) = paginator.cell(for: indexPath.row) {
+            paginator.onSelect(data)
+        }
     }
 
     override func postChange(arrayChange: ArrayWithChange<Cell<T>>) {

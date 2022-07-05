@@ -11,7 +11,7 @@ protocol ScreenManager: AnyObject {
     func showLoginScreen() -> LoginViewModel
     func showCoursesScreen(userToken: String) -> CoursesViewModel
     func showLessonsScreen(userToken: String, course: Course) -> LessonsViewModel
-    func showSingleLessonScreen(userToken: String, lesson: Lesson) -> SingleLessonViewModel
+    func showSingleLessonScreen(repository: LessonsRepository, userToken: String, lesson: Lesson) -> SingleLessonViewModel
 }
 
 protocol RepositoryFactory {
@@ -59,17 +59,31 @@ class ScreenManagerImpl<Factory: RepositoryFactory>: ScreenManager {
         viewController.coursesViewModel = viewModel
         let navigation = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigation
-        navigation.navigationBar.backgroundColor = .systemBlue
-        navigation.navigationBar.barTintColor = .systemBlue
+        navigation.navigationBar.backgroundColor = .init(white: (0xee as CGFloat) / 256.0, alpha: 1)
+        navigation.navigationBar.barTintColor = .init(white: (0xee as CGFloat) / 256.0, alpha: 1)
         return viewModel
     }
 
     func showLessonsScreen(userToken: String, course: Course) -> LessonsViewModel {
-        fatalError("")
+        let viewModel = LessonsViewModel(repository: repositoryFactory.lessonsRepository(jwtToken: userToken, course: course), userToken: userToken, screenManager: self) //(loginRepository: repositoryFactory.loginRepository(), screenManager: self)
+        guard let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "lessons") as? LessonsViewController else {
+            fatalError("View not found")
+        }
+        viewController.navigationItem.title = course.title.rendered
+        viewController.lessonsViewModel = viewModel
+        (window.rootViewController as? UINavigationController)?.pushViewController(viewController, animated: true)
+        return viewModel
     }
 
-    func showSingleLessonScreen(userToken: String, lesson: Lesson) -> SingleLessonViewModel {
-        fatalError("")
+    func showSingleLessonScreen(repository: LessonsRepository, userToken: String, lesson: Lesson) -> SingleLessonViewModel {
+        let viewModel = SingleLessonViewModel(repository: repository, userToken: userToken, screenManager: self, lesson: lesson) //(loginRepository: repositoryFactory.loginRepository(), screenManager: self)
+        guard let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "singleLesson") as? SingleLessonViewController else {
+            fatalError("View not found")
+        }
+        viewController.navigationItem.title = lesson.title.rendered
+        viewController.viewModel = viewModel
+        (window.rootViewController as? UINavigationController)?.pushViewController(viewController, animated: true)
+        return viewModel
     }
 
 }

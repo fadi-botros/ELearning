@@ -73,8 +73,11 @@ class PaginatedCrudViewModel<T> {
     var view: AbstractPaginatedCrudView<T>?
     let repository: AbstractPaginatedRepository<T>
 
-    init(repository: AbstractPaginatedRepository<T>) {
+    let onSelect: (T) -> Void
+
+    init(repository: AbstractPaginatedRepository<T>, onSelect: @escaping (T) -> Void = { _ in }) {
         self.repository = repository
+        self.onSelect = onSelect
     }
 
     func cell(for row: Int) -> Cell<T> {
